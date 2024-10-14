@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h2>
+    <p>{{ questions[currentQuestionIndex].question }}</p>
+  
+    <form [formGroup]="quizForm" (ngSubmit)="submitAnswer()">
+      <div *ngFor="let option of questions[currentQuestionIndex]?.options">
+        <input type="radio" [value]="option" formControlName="answer" /> {{ option }}
+      </div>
+      <button class="btn btn-primary mt-3" type="submit" [disabled]="quizForm.invalid">Next</button>
+    </form>
+  </div>
+  
